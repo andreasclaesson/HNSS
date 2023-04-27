@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         CardTabOpener
-// @version      0.1
+// @version      0.2
 // @namespace    HNSS
 // @description  Opens card in new tab when clicked on it
 // @downloadURL  https://raw.githubusercontent.com/venixdeveloper/HNSS/main/Farming/Deck/CardTabOpener.js
@@ -19,7 +19,7 @@
         let season = dcc[i].getElementsByClassName("deckcard")[0].getAttribute("data-season");
 
         // Remove black popup box
-        dcc[i].getElementsByClassName("deckcard-info")[0].remove();
+        dcc[i].getElementsByClassName("deckcard-info")[0].style.display = "none";
         // Add onclick attribute
         dcc[i].setAttribute("onclick", `window.open('https://www.nationstates.net/page=deck/card=${cardId}/season=${season}', '_blank');`);
     }

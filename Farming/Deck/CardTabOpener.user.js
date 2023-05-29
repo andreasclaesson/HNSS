@@ -1,10 +1,10 @@
 // ==UserScript==
 // @name         CardTabOpener
-// @version      0.3
+// @version      0.3.1
 // @namespace    HNSS
 // @description  Opens card in new tab when clicked on it
-// @downloadURL  https://raw.githubusercontent.com/venixdeveloper/HNSS/main/Farming/Deck/CardTabOpener.js
-// @updateURL    https://raw.githubusercontent.com/venixdeveloper/HNSS/main/Farming/Deck/CardTabOpener.js
+// @downloadURL  https://raw.githubusercontent.com/venixdeveloper/HNSS/main/Farming/Deck/CardTabOpener.user.js
+// @updateURL    https://raw.githubusercontent.com/venixdeveloper/HNSS/main/Farming/Deck/CardTabOpener.user.js
 // @author       VenixDeveloper (Vulxo)
 // @noframes
 // @match        https://www.nationstates.net/page=deck

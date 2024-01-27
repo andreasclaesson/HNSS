@@ -1,13 +1,13 @@
 // ==UserScript==
 // @name         BGA
 // @namespace    HNSS
-// @version      0.1
+// @version      0.2
 // @description  A script that makes beetle gifting easier
 // @downloadURL  https://raw.githubusercontent.com/andreasclaesson/HNSS/main/Farming/Deck/BGA.user.js
 // @updateURL    https://raw.githubusercontent.com/andreasclaesson/HNSS/main/Farming/Deck/BGA.user.js
 // @author       VenixDeveloper (Vulxo)
 // @noframes
-// @match        https://www.nationstates.net/page=deck/card=*/season=*
+// @match        https://www.nationstates.net/page=deck/card=*/season=*/gift=1
 // @match        https://www.nationstates.net/page=deck
 // ==/UserScript==
 

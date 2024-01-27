@@ -2,7 +2,7 @@
 // @name         CardSharksAssist
 // @namespace    HNSS
 // @version      0.4
-// @description  A script that makes beetle gifting easier, also prevents junking of Fauzjhia cards
+// @description  A script that makes gifting cards included within the Card Sharks much easier, also prevents junking them
 // @downloadURL  https://raw.githubusercontent.com/andreasclaesson/HNSS/main/Farming/Deck/CardSharksAssist.user.js
 // @updateURL    https://raw.githubusercontent.com/andreasclaesson/HNSS/main/Farming/Deck/CardSharksAssist.user.js
 // @author       VenixDeveloper (Vulxo)

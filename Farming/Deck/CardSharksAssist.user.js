@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         CardSharksAssist
 // @namespace    HNSS
-// @version      0.8
+// @version      0.8.1
 // @description  A script that makes gifting cards included within the Card Sharks much easier, also prevents junking them
 // @downloadURL  https://raw.githubusercontent.com/andreasclaesson/HNSS/main/Farming/Deck/CardSharksAssist.user.js
 // @updateURL    https://raw.githubusercontent.com/andreasclaesson/HNSS/main/Farming/Deck/CardSharksAssist.user.js
@@ -11,41 +11,66 @@
 // @match        https://www.nationstates.net/page=deck?*
 // @match        https://www.nationstates.net/page=deck
 // @grant        GM.xmlHttpRequest
-// @grant        GM.setValue
-// @grant        GM.getValue
 // @grant        GM.registerMenuCommand
 // @connect      docs.google.com
 // @connect      googleusercontent.com
 // @run-at       document-start
 // ==/UserScript==
 
-(async function() {
+document.addEventListener('DOMContentLoaded', async function() {
     'use strict';
 
-    let puppetArray = await getSpreadsheetData();
-    if (window.location.href.indexOf("/gift=1") > -1) {
-        let cardName = document.getElementsByClassName("nname")[0].innerHTML;
-        let cardId = document.getElementById("deck-single-card").getAttribute('data-cardid');
-
-        let card = findId(puppetArray, cardId)
-        if (card) {
-            document.getElementById("entity_name").value = card.gift;
-            document.getElementsByName("send_gift")[0].focus();
+    let puppetArray = getStoredData() || [];
+    GM.registerMenuCommand('Refresh Data from Google Spreadsheet', async function () {
+        try {
+            const data = await getSpreadsheetData();
+            puppetArray = data;
+            storeDataInLocalStorage(data);
+            alert('Data refreshed successfully!');
+        } catch (error) {
+            console.error('Error fetching or storing data:', error);
+            alert('Error refreshing data. Check the console for details.');
         }
-    } else if (window.location.href.indexOf("/page=deck") > -1) {
-        let junkButtons = document.querySelectorAll(
-            'a.deckcard-junk-button[data-rarity="common"],a.deckcard-junk-button[data-rarity="uncommon"], a.deckcard-junk-button[data-rarity="rare"], a.deckcard-junk-button[data-rarity="ultra-rare"],a.deckcard-junk-button[data-rarity="epic"]'
-        );
-        let convertedJunk = [...junkButtons];
-        convertedJunk.forEach(button => {
-            let card = findId(puppetArray, button.getAttribute('data-cardid'));
-            console.log(card)
-            if (card) {
-                button.classList.remove("deckcard-junk-button");
-            }
-        });
+    });
+
+    if (!puppetArray.length) {
+        getSpreadsheetData()
+            .then(data => {
+                puppetArray = data;
+                storeDataInLocalStorage(data);
+                console.log("Puppet Array has been stored")
+                processPage();
+            })
+            .catch(error => {
+                console.error('Error fetching or storing data:', error);
+            });
+    } else {
+        processPage();
     }
-})();
+    function processPage() {
+        if (window.location.href.indexOf("/gift=1") > -1) {
+            let cardName = document.getElementsByClassName("nname")[0].innerHTML;
+            let cardId = document.getElementById("deck-single-card").getAttribute('data-cardid');
+
+            let card = findId(puppetArray, cardId)
+            if (card) {
+                document.getElementById("entity_name").value = card.gift;
+                document.getElementsByName("send_gift")[0].focus();
+            }
+        } else if (window.location.href.indexOf("/page=deck") > -1) {
+            let junkButtons = document.querySelectorAll(
+                'a.deckcard-junk-button[data-rarity="common"],a.deckcard-junk-button[data-rarity="uncommon"], a.deckcard-junk-button[data-rarity="rare"], a.deckcard-junk-button[data-rarity="ultra-rare"],a.deckcard-junk-button[data-rarity="epic"]'
+            );
+            let convertedJunk = [...junkButtons];
+            convertedJunk.forEach(button => {
+                let card = findId(puppetArray, button.getAttribute('data-cardid'));
+                if (card && card.id) {
+                    button.classList.remove("deckcard-junk-button");
+                }
+            });
+        }
+    }
+});
 
 async function getSpreadsheetData() {
     try {
@@ -64,6 +89,25 @@ async function getSpreadsheetData() {
     } catch (error) {
         console.error('Error fetching data from Google Spreadsheet.', error);
         return [];
+    }
+}
+
+function storeDataInLocalStorage(data) {
+    try {
+        const serializedData = JSON.stringify(data);
+        localStorage.setItem('puppetArray', serializedData);
+        } catch (error) {
+            console.error('Error storing data in local storage.', error);
+        }
+    }
+
+function getStoredData() {
+    try {
+        const serializedData = localStorage.getItem('puppetArray');
+        return serializedData ? JSON.parse(serializedData) : null;
+    } catch (error) {
+        console.error('Error retrieving data from local storage.', error);
+        return null;
     }
 }
 

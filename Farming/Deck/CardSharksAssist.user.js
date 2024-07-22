@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         CardSharksAssist
 // @namespace    HNSS
-// @version      0.8.1
+// @version      0.8.2
 // @description  A script that makes gifting cards included within the Card Sharks much easier, also prevents junking them
 // @downloadURL  https://raw.githubusercontent.com/andreasclaesson/HNSS/main/Farming/Deck/CardSharksAssist.user.js
 // @updateURL    https://raw.githubusercontent.com/andreasclaesson/HNSS/main/Farming/Deck/CardSharksAssist.user.js

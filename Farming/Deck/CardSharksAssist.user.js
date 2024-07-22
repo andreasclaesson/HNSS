@@ -7,9 +7,9 @@
 // @updateURL    https://raw.githubusercontent.com/andreasclaesson/HNSS/main/Farming/Deck/CardSharksAssist.user.js
 // @author       VenixDeveloper (Vulxo)
 // @noframes
-// @match        https://www.nationstates.net/page=deck/card=*/season=*/gift=1
-// @match        https://www.nationstates.net/page=deck?*
-// @match        https://www.nationstates.net/page=deck
+// @match        https://*.nationstates.net/page=deck/card=*/season=*/gift=1
+// @match        https://*.nationstates.net/page=deck?*
+// @match        https://*.nationstates.net/page=deck
 // @grant        GM.xmlHttpRequest
 // @grant        GM.registerMenuCommand
 // @connect      docs.google.com

@@ -1,11 +1,12 @@
 // ==UserScript==
 // @name         Hotkeys
-// @version      1.0.0
+// @version      1.0.1
 // @description  Keybinds for everything needed in card farming.
 // @author       Vulxo; Original code by 9003.
 // @noframes
 // @updateURL    https://github.com/andreasclaesson/HNSS/raw/main/Farming/Hotkeys.user.js
 // @downloadURL  https://github.com/andreasclaesson/HNSS/raw/main/Farming/Hotkeys.user.js
+// @match        https://*.nationstates.net/*
 // @match        https://*.nationstates.net*
 // @require      https://openuserjs.org/src/libs/sizzle/GM_config.min.js
 // @require      https://craig.global.ssl.fastly.net/js/mousetrap/mousetrap.min.js?a4098

@@ -3,6 +3,8 @@
 // @namespace    HNSS
 // @version      0.1.0
 // @description  Assists you in junking cards quick. Compatible with CardSharksAssist.
+// @downloadURL  https://raw.githubusercontent.com/andreasclaesson/HNSS/main/Farming/Deck/JunkAssist.user.js
+// @updateURL    https://raw.githubusercontent.com/andreasclaesson/HNSS/main/Farming/Deck/JunkAssist.user.js
 // @author       Modified by Vulxo (VenixDeveloper), original by dithpri
 // @match        https://*.nationstates.net/*page=deck*
 // @grant        none
